@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/day25 us-states-game/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/day26 comprehension/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/day28 tkinter project/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
