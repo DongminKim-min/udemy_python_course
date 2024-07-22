@@ -24,7 +24,8 @@
 import pandas
 
 data = pandas.read_csv("nato_phonetic_alphabet.csv") #csv -> dataframe
-alph_dict = {row.letter:row.code for (index, row) in data.iterrows()} # use iterrows() to iterate the rows and make new dictionary with corresponding row datas
+alph_dict = {row.letter:row.code for (index, row) in data.iterrows()}
+# use iterrows() to iterate the rows and make new dictionary with corresponding row datas
 print(alph_dict)
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
