@@ -1,5 +1,6 @@
 import requests
 import datetime
+from twilio.rest import Client
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -30,22 +31,26 @@ print(latter_day, former_day)
 fluc_rate = 2
 print(f"fluctuation: {fluc_rate}")
 
-
 ## STEP 2: Use https://newsapi.org/docs/endpoints/everything
 # Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME.
-def get_news():
-    news_response = requests.get(url=f"{NEWS_ENDPOINT}?q=tesla&from={latter_day}&to={latter_day}&apiKey={news_api_key}")
-    news_response.raise_for_status()
-    news_data = news_response.json()
-
 #HINT 1: Think about using the Python Slice Operator
 if fluc_rate >= 1:
-    get_news()
-
+    news_params = {
+        "apiKey": news_api_key,
+        "qInTitle": COMPANY_NAME
+    }
+    news_response = requests.get(url=NEWS_ENDPOINT, params=news_params)
+    news_response.raise_for_status()
+    articles = news_response.json()["articles"]
+    three_articles = articles[:3]
+    print(articles)
 
 ## STEP 3: Use twilio.com/docs/sms/quickstart/python
 # Send a separate message with each article's title and description to your phone number. 
 #HINT 1: Consider using a List Comprehension.
+    formatted_articles = [(f"Headline: {article['title']}. "
+                           f"\nBrief: {article['description']}")
+                          for article in three_articles]
 
 
 
